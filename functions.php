@@ -143,6 +143,12 @@ function corralina_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'corralina_scripts' );
 
+
+function ale_add_scripts($hook) {
+	wp_enqueue_script( 'aletheme_metaboxes',  get_template_directory_uri(). '/inc/js/metaboxes.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-datepicker', 'media-upload', 'thickbox') );
+}
+add_action( 'admin_enqueue_scripts', 'ale_add_scripts', 10 );
+
 /**
  * Implement the Custom Header feature.
  */
@@ -172,6 +178,16 @@ require get_template_directory() . '/inc/corralina-custom-post-types.php';
  * Redux options panel.
  */
 require get_template_directory() . '/inc/sample-config.php';
+
+/**
+ * Metabox function.
+ */
+require get_template_directory() . '/inc/metaboxes.php';
+
+/**
+ * Breadcrumbs.
+ */
+require get_template_directory() . '/inc/breadcrumbs.php';
 
 /**
  * Load Jetpack compatibility file.

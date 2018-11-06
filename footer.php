@@ -14,6 +14,28 @@ $address = $opts['corralina-address'];
 ?>
 
 
+	<section class="bottom">
+		<div class="container">
+			<div class="bottom-nav">
+				<ul>
+					<li><a href="#">Homepage</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Booking</a></li>
+					<li><a href="tour.html">Tour</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">Hot deals</a></li>
+					<li><a href="#">Gallery</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+			</div>
+			<div class="social">
+				<a href="#" class="gp"><i class="fa fa-google-plus"></i></a>
+				<a href="#" class="tw"><i class="fa fa-twitter"></i></a>
+				<a href="#" class="fb"><i class="fa fa-facebook"></i></a>
+				<a href="#" class="ps"><i class="fa fa-pinterest"></i></a>
+			</div>
+		</div>
+	</section>
 	<footer>
 		<div class="container">
 			<div class="column-f">
@@ -65,6 +87,7 @@ $address = $opts['corralina-address'];
 			</div>
 		</div>
 	</footer>
+
 
 <?php wp_footer(); ?>
 </body>
