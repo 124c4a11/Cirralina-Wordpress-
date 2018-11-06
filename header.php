@@ -1,27 +1,28 @@
 <?php
 /**
  * The header for our theme
- *
- * This is the template that displays all of the <head> section and everything up until <div id="content">
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package Corralina
  */
 
+global $corralina_options;
+
+$opts = $corralina_options;
+$logo = $opts['corralina-logo']['url'];
+$phone = $opts['corralina-phone'];
+$email = $opts['corralina-email'];
 ?>
+
 <!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
 	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
-
 	<section>
 		<header class="inner">
 			<div class="container">
@@ -38,71 +39,39 @@
 						</div>
 					</div>
 					<div class="logo">
-						<a href="#"><img src="<?= get_template_directory_uri(); ?>/images/logo.png" alt="" /></a>
+						<?php if ($logo): ?>
+							<a href="<?= esc_url(home_url('/')); ?>">
+								<img src="<?= esc_url($logo); ?>" alt="" />
+							</a>
+						<? endif; ?>
 					</div>
 					<div class="contacts">
-						<span><i class="fa fa-mobile"></i>8 800 346 10 79</span>
-						<span><i class="fa fa-envelope"></i>mail@website.com</span>
+						<?php if ($phone): ?>
+							<span><i class="fa fa-mobile"></i><?= esc_attr($phone); ?></span>
+						<?php endif; ?>
+
+						<?php if ($logo): ?>
+							<span><i class="fa fa-envelope"></i><?= esc_attr($email); ?></span>
+						<?php endif; ?>
 					</div>
 				</div>
 				<nav class="main-nav in">
-					<ul class="nav-menu" >
-						<li><a href="index.html">Homepage</a></li>
-						<li><a href="about.html">About</a></li>
-						<li><a href="booking.html">Booking</a></li>
-						<li class="dropdown"><a href="tour.html" >Tour<i class="fa fa-angle-down"></i></a>
-							<ul class="drop-menu" id="drop-menu">
-								<li><a href="#" >First menu</a></li>
-								<li><a href="#" >Second menu</a></li>
-								<li><a href="#" >Thirth menu</a></li>
-							</ul>
-						</li>
-						<li class="active"><a href="blog.html">Blog</a></li>
-						<li><a href="hot-deals.html">Hot deals</a></li>
-						<li><a href="gallery.html">Gallery</a></li>
-						<li ><a href="contact.html">Contact</a></li>
-					</ul>
+					<?php
+						wp_nav_menu( array(
+							'theme_location' => 'menu-1',
+							'menu_id'        => 'primary-menu',
+							'menu_class' => 'nav-menu',
+							'container'       => 'ul', 
+						) );
+					?>
+
 					<div class="search">
-						<input type="text" id="search-input" placeholder="Keywords"/>
-						<button class="btn-search"><i class="fa fa-search"></i></button>
+						<form role="search" method="get" class="search-form" action="<?= esc_url(home_url('/')); ?>">
+							<input type="text" name="s" id="search-input" placeholder="Keywords"/>
+							<button type="submit" class="btn-search"><i class="fa fa-search"></i></button>
+						</form>
 					</div>
 				</nav>
 			</div>
 		</header>
 	</section>
-
-<!-- <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'corralina' ); ?></a>
-
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$corralina_description = get_bloginfo( 'description', 'display' );
-			if ( $corralina_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $corralina_description; /* WPCS: xss ok. */ ?></p>
-			<?php endif; ?>
-		</div>
-
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'corralina' ); ?></button>
-			<?php
-			wp_nav_menu( array(
-				'theme_location' => 'menu-1',
-				'menu_id'        => 'primary-menu',
-			) );
-			?>
-		</nav>
-	</header>
-
-	<div id="content" class="site-content"> -->

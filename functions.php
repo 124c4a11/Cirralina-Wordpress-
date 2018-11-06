@@ -45,6 +45,8 @@ if ( ! function_exists( 'corralina_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
 			'menu-1' => esc_html__( 'Primary', 'corralina' ),
+			'footerfirst' => esc_html__( 'Support Menu', 'corralina' ),
+			'footersecond' => esc_html__( 'Users Information Menu', 'corralina' ),
 		) );
 
 		/*
@@ -165,6 +167,11 @@ require get_template_directory() . '/inc/customizer.php';
  * Custom post types.
  */
 require get_template_directory() . '/inc/corralina-custom-post-types.php';
+
+/**
+ * Redux options panel.
+ */
+require get_template_directory() . '/inc/sample-config.php';
 
 /**
  * Load Jetpack compatibility file.
