@@ -33,14 +33,40 @@ function filter_deals($data) {
     ));
   }
 
-  $custom_filter = new WP_Query($args);
+  
+  if (!empty($_POST)) {
+    // filter
+    $custom_filter = new WP_Query($args);
 
-  if ($custom_filter->have_posts()) {
-    while ($custom_filter->have_posts()) {
-      $custom_filter->the_post();
-      the_title();
+    if ($custom_filter->have_posts()) {
+      while ($custom_filter->have_posts()) {
+        $custom_filter->the_post();
+        the_title();
+      }
+    } else {
+      echo 'no find posts';
     }
   } else {
-    echo 'no find posts';
+    // archive
+    $default_query = new WP_Query(array('post_type' => 'deals', 'post_per_page' => 5, ));
+
+    $i = 0;
+    
+    if ($default_query->have_posts()) {
+      while ($default_query->have_posts()) {
+        $default_query->the_post();
+        $i++;
+
+        if ($i == 1) {
+          echo '<strong>';
+          the_title();
+          echo '</strong>';
+        } else {
+          the_title();
+        }
+      }
+    } else {
+      echo 'no find posts';
+    }
   }
 }
