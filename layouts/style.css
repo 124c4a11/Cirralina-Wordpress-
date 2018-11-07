@@ -81,7 +81,9 @@ a:hover {}
 input {}
 select {}
 label {}
- 
+ body.admin-bar .home {
+	 margin-top:32px;
+ }
 /* ------------------------- Lists */
  
 /* ------------------------- Layout */
@@ -98,9 +100,9 @@ label {}
 	clear:both;
  }
  .top{
-	height:700px;
+
 	position:relative;
-	overflow: hidden;
+
  }
  .slider {
 position: relative;
@@ -247,10 +249,10 @@ nav.main-nav ul.nav-menu li{
 	position:relative;
 }
 
-nav.main-nav ul.nav-menu li:hover, nav.main-nav ul.nav-menu li.current-menu-item{
+nav.main-nav > ul.nav-menu > li:hover, nav.main-nav > ul.nav-menu > li.current-menu-item {
 	background:#60ad4c;
 }
-nav.main-nav ul.nav-menu li:hover a, nav.main-nav ul.nav-menu li.current-menu-item a{
+nav.main-nav > ul.nav-menu > li:hover a, nav.main-nav > ul.nav-menu > li.current-menu-item a{
 	color:#fff;
 }
 nav.main-nav ul.nav-menu li a{
@@ -263,7 +265,7 @@ nav.main-nav ul.nav-menu li a{
 nav.main-nav ul.nav-menu li:hover .sub-menu{
 	display:block;
 }
-nav.main-nav > ul.nav-menu > li:hover:before {
+nav.main-nav ul.nav-menu li:hover:before, nav.main-nav ul.nav-menu li.current-menu-item:before{
 	content:"";
 	position:absolute;
 	display:block;
@@ -276,10 +278,10 @@ border-right: 7px solid transparent;
 	content:"";
 	border:0px;
 }
-.dropdown, .menu-item-has-children{
+.sub-menu{
 	position:relative;
 }
-.dropdown i, .menu-item-has-children i {
+.sub-menu i {
 margin-left: 8px;
 }
 .sub-menu{
@@ -303,7 +305,7 @@ margin-left: 8px;
 	color:#fff;
 
 }
-nav.main-nav .sub-menu > li > a:hover{
+.sub-menu > li > a:hover{
 	text-decoration:underline;
 }
 .search{
@@ -397,7 +399,7 @@ right: 12px;
 	height:70px;
 	background:#604283;
 	position:relative;
-	top:486px;
+	//top:486px;
 	padding-top:16px;
 }
 .q-search-wrap select{

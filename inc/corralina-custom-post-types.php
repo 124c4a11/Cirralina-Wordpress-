@@ -41,7 +41,7 @@ function corralina_custom_post_type_deals() {
 		'show_ui'            => true,
 		'show_in_menu'       => true,
 		'query_var'          => true,
-		'rewrite'            => array( 'slug' => 'deal' ),
+		'rewrite'            => array( 'slug' => 'deals' ),
 		'capability_type'    => 'post',
 		'has_archive'        => true,
 		'hierarchical'       => false,
@@ -49,7 +49,7 @@ function corralina_custom_post_type_deals() {
 		'supports'           => array( 'title', 'editor', 'thumbnail' ),
 	);
 
-	register_post_type( 'deal', $args );
+	register_post_type( 'deals', $args );
 }
  
 add_action( 'init', 'corralina_custom_post_type_deals' );
@@ -68,7 +68,7 @@ function corralina_custom_post_type_testimonials() {
 		'show_ui'            => true,
 		'show_in_menu'       => true,
 		'query_var'          => true,
-		'rewrite'            => array( 'slug' => 'testimonial' ),
+		'rewrite'            => array( 'slug' => 'testimonials' ),
 		'capability_type'    => 'post',
 		'has_archive'        => true,
 		'hierarchical'       => false,
@@ -76,7 +76,34 @@ function corralina_custom_post_type_testimonials() {
 		'supports'           => array( 'title', 'editor', 'thumbnail', 'author' ),
 	);
 
-	register_post_type( 'testimonial', $args );
+	register_post_type( 'testimonials', $args );
 }
  
 add_action( 'init', 'corralina_custom_post_type_testimonials' );
+
+
+function corralina_custom_taxonomy() {
+	$args = array(
+		'label'        => __( 'Location', 'textdomain' ),
+		'public'       => true,
+		'rewrite'      => false,
+		'hierarchical' => true
+	);
+	$args_type = array(
+		'label'        => __( 'Type', 'textdomain' ),
+		'public'       => true,
+		'rewrite'      => false,
+		'hierarchical' => true
+	);
+	$args_price = array(
+		'label'        => __( 'Price', 'textdomain' ),
+		'public'       => true,
+		'rewrite'      => false,
+		'hierarchical' => true
+	);
+		
+	register_taxonomy( 'location', 'deals', $args );
+	register_taxonomy( 'type', 'deals', $args_type );
+	register_taxonomy( 'price', 'deals', $args_price );
+}
+add_action( 'init', 'corralina_custom_taxonomy', 0 );
